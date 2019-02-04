@@ -1,14 +1,22 @@
 # react-fieldset
-
+## Brief
 Sometimes, when using forms libraries like [Formik](http://github.com/jaredpalmer/formik) or [React Final Form](https://github.com/final-form/react-final-form), it need to **provide same name-prefix, readOnly and other context** to the few form Fields (or ErrorMessage, Custom Component, etc.). So, here for you: 
 ```javascript
-import FieldSet, { connectFieldSet } from 'react-fieldset'
+import FieldSet, { connectToFieldSet } from 'react-fieldset'
 ```
-* **FieldSet** - container-component, that provide context;
-* **connectFieldSet()** - HoC for make inner components connected with FieldSet.
+* **FieldSet** - container-component, that provide context. Props:
+  * name [string]- will be prefixed to inner components props.name
+  * readOnly [boolean || function(context] - will execute, if function and provide to inner component  
+  * ...context [object] - any other props will be provide as props.context to inner component
+* **connectToFieldSet()** - HoC for make inner components connected with FieldSet. Also it allows readOnly prop be a function in connected component:
+  * readOnly [boolean || function(context] - will execute, if function and provide to connected component
 
-All examples written in Formik style, but it not really attached with it and **can use with different libraries**.
+
+
   
+## Examples
+All examples written in Formik style, but it not really attached with it and **can use with different libraries**.
+
 ***
 ### Form data layering 
 It means to accumulate name-prefix for nested fields in a form data. For example: 
@@ -43,7 +51,7 @@ friends.map((friend, index) => (
   </FieldSet>
 </FieldSet>
 ```
-Of course, you need to connect all FieldSet inner components with **connectFieldSet()**. You can find more information about this below.
+Of course, you need to connect all FieldSet inner components with **connectToFieldSet()**. You can find more information about this below.
 
 ***
 ### Providing context to the form Fields
@@ -89,14 +97,14 @@ friends.map((friend, index) => (
 
 ***
 ### Connecting
-If you want use FieldSet you need to connect all of inner components with **connectFieldSet(Component)**.  
+If you want use FieldSet you need to connect all of inner components with **connectToFieldSet(Component)**.  
 ```javascript
 ...
-CustomFieldComponent=connectFieldSet(CustomFieldComponent)
+CustomFieldComponent=connectToFieldSet(CustomFieldComponent)
 ```
 ##### Formik annotation
 If you use Field with component={CustomInputComponent} **you don't need to connect CustomInputComponent**, you need to connect Field. Formik Field, FastField or ErrorMessage is read-only, but I don't want use another name for it. Here, my solution:
 ```javascript
 import { Field as _Field } from 'formik';
-const Field=connectFieldSet(_Field)
+const Field=connectToFieldSet(_Field)
 ```

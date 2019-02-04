@@ -7,7 +7,7 @@ import FieldSet, { connectToFieldSet } from 'react-fieldset'
   * name [string]- will be prefixed to inner components props.name
   * readOnly [boolean || function(context)] - will execute if function, and provide to inner component  
   * ...context [object] - any other props will be provide as props.context to inner component
-* **connectToFieldSet()** - HoC for make inner components connected with FieldSet. Also it allows readOnly prop be a function in connected component:
+* **connectToFieldSet()** - HoC for make inner components connected with FieldSet. Also allows: 
   * readOnly [boolean || function(context)] - will execute if function, and provide to connected component
 
 

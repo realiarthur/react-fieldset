@@ -21,6 +21,7 @@
     "fields",
     "name",
     "data layer",
+    "data slice",
     "readonly",
     "formik",
     "final form"

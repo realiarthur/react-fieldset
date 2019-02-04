@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-const FormLayerContext = React.createContext();
+const FieldSetContext = React.createContext();
 
-export const connectFormLayer = (InnerComponent)=>(props=>(
-		<FormLayerContext.Consumer>
+export const connectFieldSet = (InnerComponent)=>(props=>(
+		<FieldSetContext.Consumer>
 		{
 			(context)=>{
 				let name=context&&context.name||''
@@ -20,21 +20,21 @@ export const connectFormLayer = (InnerComponent)=>(props=>(
 				/>
 			}
 		}
-		</FormLayerContext.Consumer>
+		</FieldSetContext.Consumer>
 	)
 )
 
-class FormLayer extends Component {
+class FieldSet extends Component {
 	render() {
 		let { name, children, context, ...newContext } = this.props;
 
 		//accumulate context
 		context={...context, ...newContext, name}
 
-		return <FormLayerContext.Provider value={context}>
+		return <FieldSetContext.Provider value={context}>
 			{children}
-		</FormLayerContext.Provider>
+		</FieldSetContext.Provider>
 	}
 }
 
-export default FormLayer=connectFormLayer(FormLayer);
+export default FieldSet=connectFieldSet(FieldSet);

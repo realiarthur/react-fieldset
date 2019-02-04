@@ -1,11 +1,11 @@
 {
-  "name": "react-form-layer",
+  "name": "react-fieldset",
   "version": "1.0.0",
-  "description": "Form data layering & providing context to the form Fields",
+  "description": "Provide {name, readOnly, ...context} to the Field components from forms libraries like Formik, Final Form, etc.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/realiarthur/react-form-layer.git"
+    "url": "git+https://github.com/realiarthur/react-fieldset.git"
   },
   "keywords": [
     "react",
@@ -22,9 +22,9 @@
   "author": "realiarthur",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/realiarthur/react-form-layer/issues"
+    "url": "https://github.com/realiarthur/react-fieldset/issues"
   },
-  "homepage": "https://github.com/realiarthur/react-form-layer#readme",
+  "homepage": "https://github.com/realiarthur/react-fieldset#readme",
   "peerDependencies": {
     "react": "^16.0.0"
   }

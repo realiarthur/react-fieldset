@@ -3,15 +3,19 @@ Sometimes, when using forms libraries like [Formik](http://github.com/jaredpalme
 ```javascript
 import FieldSet, { connectToFieldSet } from 'react-fieldset'
 ```
-* **FieldSet** - container-component, that provide context. Props:
-  * name [string]- will be prefixed to inner components props.name
-  * readOnly [boolean || function(context)] - will execute if function, and provide to inner component  
-  * ...context [object] - any other props will be provide as props.context to inner component
-* **connectToFieldSet()** - HoC for make inner components connected with FieldSet. Also allows: 
-  * readOnly [boolean || function(context)] - will execute if function, and provide to connected component. More information in [example](https://github.com/realiarthur/react-fieldset#readonly)
+**FieldSet** - container-component, that provide context. FieldSet props:
 
+Prop | Type | Description
+-----|------|-----------
+name | string | Will be prefixed to inner components props.name. Also works fine for arrays or deep nested values
+readOnly | boolean or function(context) | Will execute if function, and provide to inner components. Nested fields have higher priority to set it
+...context | object | Any other props will be provide as props.context into inner component. Props will accumulate from whole your context tree.
 
+**connectToFieldSet()** - HoC for make inner components connected with FieldSet. Allows for connected component to have props: 
 
+Prop | Type | Description
+-----|------|-----------
+readOnly | boolean or function(context) | Will execute if function, and provide into connected component. More information in [example](https://github.com/realiarthur/react-fieldset#readonly)  
   
 # Examples
 All examples written in Formik style, but it not really attached with it and **can use with different libraries**.
@@ -66,7 +70,6 @@ const CustomInputComponent = ( {context, ...props} )=>{
 }
 
 ```
-By the way, props will accumulate into props.context from **whole your context tree.**
 
 ## readOnly
 Sometimes it need to set same readOnly prop for few Fields. So, FieldSet provide it **directly to your Field components** (not into context, like other props). Feel free to use FieldSet without name-prefix:

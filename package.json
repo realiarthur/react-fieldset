@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/realiarthur/react-fieldset.git"
   },
+  "scripts": {
+    "build": "webpack"
+  },
   "keywords": [
     "react",
     "hoc",
@@ -27,5 +30,12 @@
   "homepage": "https://github.com/realiarthur/react-fieldset#readme",
   "peerDependencies": {
     "react": "^16.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "react": "^16.7.0"
   }
 }

@@ -1,0 +1,30 @@
+{
+  "name": "react-form-layer",
+  "version": "1.0.0",
+  "description": "Form data layering & providing context to the form Fields",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/realiarthur/react-form-layer.git"
+  },
+  "keywords": [
+    "react",
+    "hoc",
+    "higher order component",
+    "context",
+    "form",
+    "forms",
+    "fields",
+    "formik",
+    "final form"
+  ],
+  "author": "realiarthur",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/realiarthur/react-form-layer/issues"
+  },
+  "homepage": "https://github.com/realiarthur/react-form-layer#readme",
+  "peerDependencies": {
+    "react": "^16.0.0"
+  }
+}

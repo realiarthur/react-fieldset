@@ -5,7 +5,8 @@ module.exports = {
   entry: './react-fieldset',
   output: {
     filename: 'index.js',
-    path: __dirname
+    path: __dirname,
+    libraryTarget: 'umd'
   },
   module: {
     rules: [

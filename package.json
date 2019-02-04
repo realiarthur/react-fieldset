@@ -1,6 +1,6 @@
 {
   "name": "react-fieldset",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Provide {name, readOnly, ...context} to the Field components from forms libraries like Formik, Final Form, etc.",
   "main": "index.js",
   "repository": {
@@ -17,7 +17,10 @@
     "context",
     "form",
     "forms",
+    "field",
     "fields",
+    "name",
+    "data layer",
     "readonly",
     "formik",
     "final form"
@@ -36,6 +39,6 @@
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
-    "react": "^16.7.0"
+    "react": "^16.0.0"
   }
 }

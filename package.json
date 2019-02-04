@@ -1,6 +1,6 @@
 {
   "name": "react-fieldset",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Provide {name, readOnly, ...context} to the Field components from forms libraries like Formik, Final Form, etc.",
   "main": "index.js",
   "repository": {

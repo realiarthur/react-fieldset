@@ -8,15 +8,15 @@ import FieldSet, { connectToFieldSet } from 'react-fieldset'
   * readOnly [boolean || function(context)] - will execute if function, and provide to inner component  
   * ...context [object] - any other props will be provide as props.context to inner component
 * **connectToFieldSet()** - HoC for make inner components connected with FieldSet. Also allows: 
-  * readOnly [boolean || function(context)] - will execute if function, and provide to connected component
+  * readOnly [boolean || function(context)] - will execute if function, and provide to connected component. More information in [example](https://github.com/realiarthur/react-fieldset#readonly)
 
 
 
   
-## Examples
+# Examples
 All examples written in Formik style, but it not really attached with it and **can use with different libraries**.
 
-### Form data layering 
+## Form data layering 
 It means to accumulate name-prefix for nested fields in a form data. For example: 
 ```jsx
 //This one
@@ -51,7 +51,7 @@ friends.map((friend, index) => (
 ```
 Of course, you need to connect all FieldSet inner components with **connectToFieldSet()**. You can find more information about this below.
 
-### Providing context to the form Fields
+## Providing context to the form Fields
 You can put whatever you want into the props of FieldSet, and find it into **props.context (exept readOnly)** in your Custom component. For example, FieldSet can share array item to all Fields components:
 ```jsx
 friends.map((friend, index) => (
@@ -68,7 +68,7 @@ const CustomInputComponent = ( {context, ...props} )=>{
 ```
 By the way, props will accumulate into props.context from **whole your context tree.**
 
-### readOnly
+## readOnly
 Sometimes it need to set same readOnly prop for few Fields. So, FieldSet provide it **directly to your Field components** (not into context, like other props). Feel free to use FieldSet without name-prefix:
 ```jsx
 //This one
@@ -91,7 +91,7 @@ friends.map((friend, index) => (
 </FieldSet>
 ```
 
-### Connecting
+## Connecting
 If you want use FieldSet you need to connect all of inner components with **connectToFieldSet(Component)**.  
 ```javascript
 ...

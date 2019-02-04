@@ -91,7 +91,7 @@ friends.map((friend, index) => (
 </FieldSet>
 ```
 
-## Connecting
+## Connection
 If you want use FieldSet you need to connect all of inner components with **connectToFieldSet(Component)**.  
 ```javascript
 ...

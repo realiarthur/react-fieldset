@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const FieldSetContext = React.createContext();
 
-export const connectFieldSet = (InnerComponent)=>(props=>(
+export const connectToFieldSet = (InnerComponent)=>(props=>(
 		<FieldSetContext.Consumer>
 		{
 			(context)=>{
@@ -37,4 +37,4 @@ class FieldSet extends Component {
 	}
 }
 
-export default FieldSet=connectFieldSet(FieldSet);
+export default FieldSet=connectToFieldSet(FieldSet);

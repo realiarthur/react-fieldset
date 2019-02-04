@@ -40,11 +40,11 @@ friends.map((friend, index) => (
   </FieldSet>
 </FieldSet>
 ```
-Of course, you need to connect all FormLayers inner components with **connectFormLayer()**. You can find more information about this below.
+Of course, you need to connect all FieldSet inner components with **connectFieldSet()**. You can find more information about this below.
 
 ***
 ### Providing context to the form Fields
-You can put whatever you want into the props of FieldSet, and find it into **props.context (exept readOnly)** in your Custom component. For example, we can share array item to all Fields components:
+You can put whatever you want into the props of FieldSet, and find it into **props.context (exept readOnly)** in your Custom component. For example, FieldSet can share array item to all Fields components:
 ```jsx
 friends.map((friend, index) => (
 <FieldSet key={index} name={`friends.${index}`} friend={friend}>
@@ -62,7 +62,7 @@ By the way, props will accumulate into props.context from **whole your context t
 
 ***
 ### readOnly
-Sometimes it need to set readOnly for few Fields. So, FieldSet provide it **directly to your Fields components** (not into context, like other props). Feel free to use FieldSet without name-prefix:
+Sometimes it need to set same readOnly prop for few Fields. So, FieldSet provide it **directly to your Field components** (not into context, like other props). Feel free to use FieldSet without name-prefix:
 ```jsx
 //This one
 <Field name="facebook" readOnly={true} />
@@ -86,14 +86,14 @@ friends.map((friend, index) => (
 
 ***
 ### Connecting
-If you want use FieldSet you need to connect all of inner components with **connectFormLayer(Component)**.  
+If you want use FieldSet you need to connect all of inner components with **connectFieldSet(Component)**.  
 ```javascript
 ...
-CustomFieldComponent=connectFormLayer(CustomFieldComponent)
+CustomFieldComponent=connectFieldSet(CustomFieldComponent)
 ```
 ##### Formik annotation
 If you use Field with component={CustomInputComponent} **you don't need to connect CustomInputComponent**, you need to connect Field. Formik Field, FastField or ErrorMessage is read-only, but I don't want use another name for it. Here, my solution:
 ```javascript
 import { Field as _Field } from 'formik';
-const Field=connectFormLayer(_Field)
+const Field=connectFieldSet(_Field)
 ```

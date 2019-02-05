@@ -3,7 +3,7 @@
 # React FieldSet
 Sometimes, when using forms libraries like [Formik](http://github.com/jaredpalmer/formik) or [React Final Form](https://github.com/final-form/react-final-form), it need to **provide same name-prefix, readOnly, context and other props** to the few form Fields (or ErrorMessage, Custom Component, etc.). So, here for you: 
 ```javascript
-import FieldSet, { connectToFieldSet } from 'react-fieldset'
+import FieldSet, { connectToFieldSet } from 'react-fieldset';
 ```
 **FieldSet** - container-component, that provide context. Specified props:
 
@@ -101,13 +101,13 @@ friends.map((friend, index) => (
 ## Connection
 If you want use FieldSet you need to connect all of inner components with **connectToFieldSet(Component)**.  
 ```javascript
-import { connectToFieldSet } from 'react-fieldset'
-CustomFieldComponent=connectToFieldSet(CustomFieldComponent)
+import { connectToFieldSet } from 'react-fieldset';
+CustomFieldComponent=connectToFieldSet(CustomFieldComponent);
 ```
 ##### Formik annotation
 If you use Field with component={CustomInputComponent} **you don't need to connect CustomInputComponent**, you need to connect Field. Formik Field, FastField or ErrorMessage is read-only, but I don't want use another name for it. Here, my solution:
 ```javascript
-import { connectToFieldSet } from 'react-fieldset'
+import { connectToFieldSet } from 'react-fieldset';
 import { Field as _Field, ErrorMessage as _ErrorMessage, FastField as _FastField } from 'formik';
 export const Field=connectToFieldSet(_Field);
 export const ErrorMessage=connectToFieldSet(_ErrorMessage);

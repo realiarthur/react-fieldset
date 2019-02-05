@@ -6,7 +6,7 @@ export const connectToFieldSet = (InnerComponent)=>(componentProps=>(
 		<FieldSetContext.Consumer>
 		{
 			(contextProps)=>{
-				let {name, context, readOnly, props} = contextProps||{name: '', context: {}, props: {}}
+				let {name, context, readOnly, props} = contextProps||{name: '', context: {}, props: {}, readOnly: undefined}
 
 				//Accumulate Context
 				context={ ...context, ...componentProps.context, name }
@@ -17,14 +17,14 @@ export const connectToFieldSet = (InnerComponent)=>(componentProps=>(
 				//Execute InnerComponent or FieldSet readOnly if needed and provide it to InnerComponent 
 				readOnly = componentProps.readOnly!==undefined ? componentProps.readOnly : readOnly 
 				readOnly = typeof(readOnly)==='function' ? readOnly(context) : readOnly;
+				
+				//Prohibit to provide undefined readOnly
+				props={...props, ...componentProps, name, context}
+				if (readOnly!==undefined) {
+					props.readOnly=readOnly
+				}
 
-				return <InnerComponent 
-					{...props}
-					{...componentProps}
-					name={name}
-					context={context}
-					readOnly={readOnly}
-				/>
+				return <InnerComponent {...props} />
 			}
 		}
 		</FieldSetContext.Consumer>

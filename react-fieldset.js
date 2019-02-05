@@ -2,21 +2,28 @@ import React, { Component } from 'react';
 
 const FieldSetContext = React.createContext();
 
-export const connectToFieldSet = (InnerComponent)=>(props=>(
+export const connectToFieldSet = (InnerComponent)=>(componentProps=>(
 		<FieldSetContext.Consumer>
 		{
-			(context)=>{
-				let name=context&&context.name||''
-				name = props.name ? (name?name+'.':'')+props.name : name
+			(contextProps)=>{
+				let {name, context, readOnly, props} = contextProps||{name: '', context: {}, props: {}}
 
-				let readOnly = props.readOnly || context&&context.readOnly 
+				//Accumulate Context
+				context={ ...context, ...componentProps.context, name }
+				
+				//Data Layering
+				name = componentProps.name ? (name?name+'.':'')+componentProps.name : name
+
+				//Execute InnerComponent or FieldSet readOnly if needed and provide it to InnerComponent 
+				readOnly = componentProps.readOnly!==undefined ? componentProps.readOnly : readOnly 
 				readOnly = typeof(readOnly)==='function' ? readOnly(context) : readOnly;
 
 				return <InnerComponent 
-					{...props} 
+					{...props}
+					{...componentProps}
+					name={name}
 					context={context}
 					readOnly={readOnly}
-					name={name}
 				/>
 			}
 		}
@@ -26,12 +33,8 @@ export const connectToFieldSet = (InnerComponent)=>(props=>(
 
 class FieldSet extends Component {
 	render() {
-		let { name, children, context, ...newContext } = this.props;
-
-		//accumulate context
-		context={...context, ...newContext, name}
-
-		return <FieldSetContext.Provider value={context}>
+		let { name, readOnly, context, children, ...props } = this.props;
+		return <FieldSetContext.Provider value={ {name, readOnly, context, props} }>
 			{children}
 		</FieldSetContext.Provider>
 	}

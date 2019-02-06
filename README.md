@@ -14,7 +14,7 @@ context | object | Will be provided to inner component. It **accumulates from wh
 readOnly | boolean or function(context) | Will be executed if function, and provided to inner components. **Nested FieldSet have higher priority** to set this prop.
 ...props | any | All other props will be provided to connected component as they are, from whole context tree.
 
-**connectToFieldSet()** - HoC for make inner components connected with FieldSet. Allows for connected component to have props: 
+**connectToFieldSet()** - HoC (higher order component) for make inner components connected with FieldSet. Allows for connected component to have props: 
 
 Prop | Type | Description
 -----|------|-----------

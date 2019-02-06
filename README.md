@@ -52,7 +52,7 @@ friends.map((friend, index) => (
   
   <FieldSet name='level2'>
     <Field name='deep-nested-value' 
-      validate={ (value)=>(value?false:'Required!') }/>
+      validate={ (value)=>(value==''?'Required!':false) }/>
     <ErrorMessage name='deep-nested-value'/>
   </FieldSet>
 </FieldSet>

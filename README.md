@@ -51,18 +51,25 @@ friends.map((friend, index) => (
   <Field name='nested-value'/>
   
   <FieldSet name='level2'>
-    <Field name='deep-nested-value' validate={ (value)=>(value?false:'Required!') }/>
+    <Field 
+      name='deep-nested-value' 
+      validate={ (value)=>(value?false:'Required!') }
+    />
     <ErrorMessage name='deep-nested-value'/>
   </FieldSet>
 </FieldSet>
 ```
-Of course, you need to connect all FieldSet inner components with **connectToFieldSet()**. You can find more information about this below.
+Of course, you need to connect all FieldSet inner components with **connectToFieldSet()**. You can find more information about this [below](https://github.com/realiarthur/react-fieldset#connection).
 
 ## Providing context and props to the form Fields
 You can put whatever you want into the context prop of FieldSet, and find all this staff from whole context tree in **props.context** of your Custom component. All other props (exept name, readOnly and context) will provided directly to inner component. So, for example, FieldSet can share array item to all Fields components, and set required for all inputs in one line:
 ```jsx
 friends.map((friend, index) => (
-<FieldSet key={index} name={`friends.${index}`} context={ {friend} } required={true}>
+<FieldSet 
+  key={index} 
+  name={`friends.${index}`} 
+  context={ {friend} } 
+  required={true}>
   <Field name="name"/>
   <Field name="age" component={CustomInputComponent}/>
 </FieldSet>
@@ -108,7 +115,10 @@ CustomFieldComponent=connectToFieldSet(CustomFieldComponent);
 If you use Field with component={CustomInputComponent} **you don't need to connect CustomInputComponent**, you need to connect Field. Formik Field, FastField or ErrorMessage is read-only, but I don't want use another name for it. Here, my solution:
 ```javascript
 import { connectToFieldSet } from 'react-fieldset';
-import { Field as _Field, ErrorMessage as _ErrorMessage, FastField as _FastField } from 'formik';
+import { Field as _Field } from 'formik';
+import { ErrorMessage as _ErrorMessage } from 'formik';
+import { FastField as _FastField } from 'formik';
+
 export const Field=connectToFieldSet(_Field);
 export const ErrorMessage=connectToFieldSet(_ErrorMessage);
 export const FastField=connectToFieldSet(_FastField);

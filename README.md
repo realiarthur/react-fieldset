@@ -51,8 +51,7 @@ friends.map((friend, index) => (
   <Field name='nested-value'/>
   
   <FieldSet name='level2'>
-    <Field 
-      name='deep-nested-value' 
+    <Field name='deep-nested-value' 
       validate={ (value)=>(value?false:'Required!') }
     />
     <ErrorMessage name='deep-nested-value'/>
@@ -65,8 +64,7 @@ Of course, you need to connect all FieldSet inner components with **connectToFie
 You can put whatever you want into the context prop of FieldSet, and find all this staff from whole context tree in **props.context** of your Custom component. All other props (exept name, readOnly and context) will provided directly to inner component. So, for example, FieldSet can share array item to all Fields components, and set required for all inputs in one line:
 ```jsx
 friends.map((friend, index) => (
-<FieldSet 
-  key={index} 
+<FieldSet key={index} 
   name={`friends.${index}`} 
   context={ {friend} } 
   required={true}>
@@ -98,10 +96,13 @@ Sometimes it need to set same readOnly prop for few Fields. So, feel free to **u
 Sometimes it need to set readOnly in dependence of context, so **readOnly can be a function**, that takes context as param. **readOnly can be a function also in your Field component**, since you connect it with FieldSet:  
 ```jsx
 friends.map((friend, index) => (
-<FieldSet key={index} name={`friends.${index}`} context={ {friend} }>
+<FieldSet key={index} 
+  name={`friends.${index}`} 
+  context={ {friend} }>
   <Field name="name"/>
   <Field name="age"/>
-  <Field name="drink" readOnly={ ( {friend} )=>(friend.age<21) }/>
+  <Field name="drink" 
+    readOnly={ ( {friend} )=>(friend.age<21) }/>
 </FieldSet>
 ```
 

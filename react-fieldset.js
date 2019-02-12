@@ -19,15 +19,19 @@ export const withFieldSet = (InnerComponent, provideParentName=false)=>(
 	}
 )
 
-export const withFullName = (InnerComponent)=>( (props)=>(
-	<Consumer>
-		{
-			( contextProps )=>{
-				return <InnerComponent {...props} name={ prefixeName(contextProps, props) }/>
-			}
+export const withFullName = (InnerComponent)=>( 
+	class WithFullName extends PureComponent {
+		render() {
+			return <Consumer>
+				{
+					( contextProps )=>{
+						return <InnerComponent {...this.props} name={ prefixeName(contextProps, this.props) }/>
+					}
+				}
+			</Consumer>
 		}
-	</Consumer>
-));
+	}
+)
 
 let FieldSet = (props)=>{
 	let {children, ...otheProps}=props;

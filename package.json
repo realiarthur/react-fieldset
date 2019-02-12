@@ -47,8 +47,5 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "react": "^16.0.0"
-  },
-  "dependencies": {
-    "react-render-counter": "^1.0.1"
   }
 }

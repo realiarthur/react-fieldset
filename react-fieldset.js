@@ -1,43 +1,38 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent, createContext } from 'react';
 
-const FieldSetContext = React.createContext();
+const prefixeName=(contextProps, props)=>(props.name ? (contextProps&&contextProps.name?contextProps.name+'.':'')+props.name : contextProps.name);
+const  { Provider, Consumer } = createContext();
 
-export const connectToFieldSet = (InnerComponent)=>(componentProps=>(
-		<FieldSetContext.Consumer>
-		{
-			(contextProps)=>{
-				let {name, context, readOnly, props} = contextProps||{name: '', context: {}, props: {}, readOnly: undefined}
-
-				//Accumulate Context
-				context={ ...context, ...componentProps.context, name }
-				
-				//Data Layering
-				name = componentProps.name ? (name?name+'.':'')+componentProps.name : name
-
-				//Execute InnerComponent or FieldSet readOnly if needed and provide it to InnerComponent 
-				readOnly = componentProps.readOnly!==undefined ? componentProps.readOnly : readOnly 
-				readOnly = typeof(readOnly)==='function' ? readOnly(context) : readOnly;
-				
-				//Prohibit to provide undefined readOnly
-				props={...props, ...componentProps, name, context}
-				if (readOnly!==undefined) {
-					props.readOnly=readOnly
-				}
-
-				return <InnerComponent {...props} />
-			}
+export const withFieldSet = (InnerComponent, provideParentName=false)=>(
+	class WithFieldSet extends PureComponent{
+		render() {
+			return <Consumer>
+				{( contextProps )=>{
+					let props = {...contextProps, ...this.props, name: prefixeName(contextProps, this.props)}
+					if (provideParentName) {
+						props.parentName=contextProps.name
+					}
+					return <InnerComponent {...props}/>
+				}}
+			</Consumer>
 		}
-		</FieldSetContext.Consumer>
-	)
+	}
 )
 
-class FieldSet extends Component {
-	render() {
-		let { name, readOnly, context, children, ...props } = this.props;
-		return <FieldSetContext.Provider value={ {name, readOnly, context, props} }>
-			{children}
-		</FieldSetContext.Provider>
-	}
-}
+export const withFullName = (InnerComponent)=>( (props)=>(
+	<Consumer>
+		{
+			( contextProps )=>{
+				return <InnerComponent {...props} name={ prefixeName(contextProps, props) }/>
+			}
+		}
+	</Consumer>
+));
 
-export default FieldSet=connectToFieldSet(FieldSet);
+let FieldSet = (props)=>{
+	let {children, ...otheProps}=props;
+	return <Provider value={ otheProps }>
+		{ children }
+	</Provider>
+}
+export default FieldSet=withFullName(FieldSet);

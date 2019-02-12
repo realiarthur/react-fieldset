@@ -1,6 +1,4 @@
-[![](https://img.shields.io/npm/v/react-fieldset.svg?style=flat)](https://www.npmjs.com/package/react-fieldset)
-
-# React FieldSet
+# React FieldSet [![](https://img.shields.io/npm/v/react-fieldset.svg?style=flat)](https://www.npmjs.com/package/react-fieldset)
 Sometimes, when using forms libraries like [Formik](http://github.com/jaredpalmer/formik) or [React Final Form](https://github.com/final-form/react-final-form), it need to **provide same name-prefix, readOnly, context and other props** to the few form Fields (or ErrorMessage, Custom Component, etc.). So, here for you: 
 ```javascript
 import FieldSet, { connectToFieldSet } from 'react-fieldset';

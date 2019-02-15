@@ -46,7 +46,7 @@ It's also works fine with Arrays, Deep nested fields, ErrorMessage or your Custo
 ```jsx
 import FieldSet, { withFieldSet, withFullName } from 'react-fieldset';
 Field = withFieldSet(Field);
-CustomFieldComponent = withFieldSet(CustomFieldComponent)
+CustomFieldComponent = withFieldSet(CustomFieldComponent, true)
 ErrorMessage=withFullName(ErrorMessage)
 
 //Array
@@ -99,7 +99,7 @@ You can provide in props whatever you want, include functions or object, but che
 If you want use FieldSet you need to connect all of inner components with **withFieldSet(Component)**.  
 ```javascript
 import { withFieldSet } from 'react-fieldset';
-CustomFieldComponent=withFieldSet(CustomFieldComponent);
+CustomFieldComponent=withFieldSet(CustomFieldComponent, true);
 ```
 ##### Formik notes
 If you use Field with component={CustomInputComponent} **you don't need to connect CustomInputComponent**, you need to connect Field. Formik Field, FastField or ErrorMessage is read-only, but I don't want use another name for it. Here, my solution:

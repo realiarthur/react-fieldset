@@ -3,22 +3,27 @@ Sometimes, when using forms libraries like [Formik](http://github.com/jaredpalme
 ```javascript
 import FieldSet, { withFieldSet, withFullName } from 'react-fieldset';
 ```
-**FieldSet** - container-component, that provide context. Specified props:
+
+### FieldSet
+Container-component, that provide context. Specified props:
 
 Prop | Type | Description
 -----|------|-----------
 name | string | Will be prefixed to inner components props.name. It accumulates from whole context tree, so it also works fine for **deep nested objects or arrays.**
 ...props | any | All other props will be provided to inner component as they are, from parent FieldSet.
- | | | *Other specified props from version 2.x is deprecated for perfomance. For get "context", use props.parentName in child copmonents*
 
-**withFieldSet**(InnerComponent, [provideParentName=false]) - HoC (higher order component) for make inner components connected with FieldSet and take all props. Allows for connected component to have props:
+*Other specified props from version 2.x is deprecated for perfomance. For get "context", use props.parentName in child copmonents*
+
+### withFieldSet (InnerComponent, [ provideParentName=false ]) 
+HoC (higher order component) for make inner components connected with FieldSet and take all props. Allows for connected component to have props:
 
 Prop | Type | Description
 -----|------|-----------
 parentName | string | Provide parent FieldSet full name into component, if arg "provideParentName" of withFieldSet is true.
 
 
-**withFullName**(InnerComponent) - HoC for make inner components connected with FieldSet and only prefixed name prop and ignore other context.
+### withFullName(InnerComponent)
+HoC for make inner components connected with FieldSet and only prefixed name prop and ignore other context.
 
 
   

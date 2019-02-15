@@ -3,6 +3,7 @@ Sometimes, when using forms libraries like [Formik](http://github.com/jaredpalme
 ```javascript
 import FieldSet, { withFieldSet, withFullName } from 'react-fieldset';
 ```
+<br/>
 
 ### FieldSet
 Container-component, that provide context. Specified props:

@@ -12,7 +12,9 @@ Prop | Type | Description
 name | string | Will be prefixed to inner components props.name. It accumulates from whole context tree, so it also works fine for **deep nested objects or arrays.**
 ...props | any | All other props will be provided to inner component as they are, from parent FieldSet.
 
-*Other specified props from version 2.x is deprecated for perfomance. For get "context", use props.parentName in child copmonents*
+*Other specified props from version 2.x is deprecated for performance. For get "context", use props.parentName in child components*
+
+<br/>
 
 ### withFieldSet (InnerComponent, [ provideParentName=false ]) 
 HoC (higher order component) for make inner components connected with FieldSet and take all props. Allows for connected component to have props:
@@ -21,11 +23,12 @@ Prop | Type | Description
 -----|------|-----------
 parentName | string | Provide parent FieldSet full name into component, if arg "provideParentName" of withFieldSet is true.
 
+<br/>
 
 ### withFullName(InnerComponent)
 HoC for make inner components connected with FieldSet and only prefixed name prop and ignore other context.
 
-
+<br/>
   
 # Examples
 All examples written in Formik style, but it not really attached with it and **can use with different libraries**.
@@ -74,8 +77,10 @@ friends.map((friend, index) => (
 ```
 Of course, you need to connect all FieldSet inner components with **withFieldSet()**. You can find more information about this [below](#connection).
 
+<br/>
+
 ### Providing props to the form components
-All props (exept name) will provided directly to inner component. Also, **feel free to use FieldSet without name-prefix** if needed. So, for example, FieldSet can set "required" for all Fields components in one line:
+All props (exept name) will be provided directly to inner component. Also, **feel free to use FieldSet without name-prefix** if needed. So, for example, FieldSet can set "required" for all Fields components in one line:
 ```jsx
 import FieldSet, { withFieldSet } from 'react-fieldset';
 Field = withFieldSet(Field);
@@ -97,7 +102,9 @@ Field = withFieldSet(Field);
 </FieldSet>
 
 ```
-You can provide in props whatever you want, include functions or object, but check [Perfomance notes](#perfomance) first.
+You can provide in props whatever you want, include functions or object, but check [performance notes](#performance) first.
+
+<br/>
 
 ### Connection
 If you want use FieldSet you need to connect all of inner components with **withFieldSet(Component)**.  
@@ -118,7 +125,9 @@ export const FastField=withFieldSet(_FastField);
 export const ErrorMessage=withFullName(_ErrorMessage);
 ```
 
-# Perfomance
+<br/>
+
+# Performance
 * FieldSet provides its context for all child components wrapped with withFieldSet, so **avoid passing inline-functions and objects to FieldSet props** if possible - this will cause each of connected child components to be re-rendered each time with Formik, which can affect performance. 
 * **withFieldSet returns PureComponents,** so similarly avoid passing inline-functions and objects to props wrapped components, if possible
 * For components in which you don't need props from context and **only need to name prefixed use withFullName.** Its ignores the whole context of the FieldSet, and only adds the name of the component, so this component will not be rerenders when you change the context.

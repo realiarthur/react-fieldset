@@ -12,6 +12,8 @@
   },
   "keywords": [
     "react",
+    "formik",
+    "final form",
     "hoc",
     "form",
     "field",
@@ -19,18 +21,13 @@
     "fieldset",
     "name",
     "data layer",
-    "data slice",
-    "readonly",
-    "disable",
-    "formik",
-    "final form",
+    "data slice"
     "higher order component",
     "context",
     "forms",
     "fields",
     "fields group",
-    "field set",
-    "read only"
+    "field set"
   ],
   "author": "realiarthur",
   "license": "MIT",

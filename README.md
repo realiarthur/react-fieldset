@@ -9,8 +9,7 @@ Prop | Type | Description
 -----|------|-----------
 name | string | Will be prefixed to inner components props.name. It accumulates from whole context tree, so it also works fine for **deep nested objects or arrays.**
 ...props | any | All other props will be provided to inner component as they are, from parent FieldSet.
-
-*All other specified props from version 2.x is deprecated for perfomance. For take "context", use props.parentName in child copmonents*
+ | | | *Other specified props from version 2.x is deprecated for perfomance. For get "context", use props.parentName in child copmonents*
 
 **withFieldSet**(InnerComponent, [provideParentName=false]) - HoC (higher order component) for make inner components connected with FieldSet and take all props. Allows for connected component to have props:
 

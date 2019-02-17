@@ -3,14 +3,14 @@ import React, { Component, PureComponent, createContext } from 'react';
 const prefixeName=(contextProps, props)=>(props.name ? (contextProps&&contextProps.name?contextProps.name+'.':'')+props.name : contextProps.name);
 const  { Provider, Consumer } = createContext();
 
-export const withFieldSet = (InnerComponent, provideParentName=false)=>(
+export const withFieldSet = (InnerComponent, provideFieldSetName=false)=>(
 	class WithFieldSet extends PureComponent{
 		render() {
 			return <Consumer>
 				{( contextProps )=>{
 					let props = {...contextProps, ...this.props, name: prefixeName(contextProps, this.props)}
-					if (provideParentName) {
-						props.parentName=contextProps&&contextProps.name
+					if (provideFieldSetName) {
+						props.fieldsetName=contextProps&&contextProps.name
 					}
 					return <InnerComponent {...props}/>
 				}}

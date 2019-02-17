@@ -130,6 +130,6 @@ export const ErrorMessage=withFullName(_ErrorMessage);
 
 # Performance
 * FieldSet provides its context for all child components wrapped with withFieldSet, so **avoid passing inline-functions and objects to FieldSet props** if possible - this will cause each of connected child components to be re-rendered each time with Formik, which can affect performance. 
-* **withFieldSet returns PureComponents,** so similarly avoid passing inline-functions and objects to props wrapped components, if possible
-* For components in which you don't need props from context and **only need to name prefixed use withFullName.** Its ignores the whole context of the FieldSet, and only adds the name of the component, so this component will not be rerenders when you change the context.
+* **withFieldSet returns PureComponents,** so similarly avoid passing inline-functions and objects to props of wrapped components, if possible
+* For components in which you don't need props from context and **only need to name prefixed use withFullName.** Its ignores context of the FieldSet, and only adds the name of the component, so this component will not be rerenders when you change the context.
 * You can also **combine both of these HoCs** (withFieldSet, withFullName) to isolate one component from the context, and provide it to others within the same FieldSet

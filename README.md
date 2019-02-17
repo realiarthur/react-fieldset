@@ -13,16 +13,16 @@ Prop | Type | Description
 name | string | Will be prefixed to inner components props.name. It accumulates from whole context tree, so it also works fine for **deep nested objects or arrays.**
 ...props | any | All other props will be provided to inner component as they are, from parent FieldSet.
 
-*Other specified props from version 2.x is deprecated for performance. For get "context", use props.fieldsetName in child components*
+*Other specified props from version 2.x is deprecated for performance. For get "context", use props.contextName in child components*
 
 <br/>
 
-### withFieldSet (InnerComponent, [ provideFieldSetName=false ]) 
+### withFieldSet (InnerComponent, [ provideContextName=false ]) 
 HoC (higher order component) for make inner components connected with FieldSet and take all props. Allows for connected component to have props:
 
 Prop | Type | Description
 -----|------|-----------
-fieldsetName | string | Provide parent FieldSet full name into component, if arg "provideFieldSetName" of withFieldSet is true.
+contextName | string | Provide parent FieldSet full name into component, if arg "provideContextName" of withFieldSet is true.
 
 <br/>
 

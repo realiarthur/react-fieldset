@@ -22,7 +22,7 @@ HoC (higher order component) for make inner components connected with FieldSet a
 
 Prop | Type | Description
 -----|------|-----------
-contextName | string | Provide parent FieldSet full name into component, if arg "provideContextName" of withFieldSet is true.
+contextName | string | Provide parent FieldSet full name into component, if it not specified and arg "provideContextName" of withFieldSet is true.
 
 <br/>
 

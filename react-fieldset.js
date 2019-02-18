@@ -9,7 +9,7 @@ export const withFieldSet = (InnerComponent, provideContextName=false)=>(
 			return <Consumer>
 				{( contextProps )=>{
 					let props = {...contextProps, ...this.props, name: prefixeName(contextProps, this.props)}
-					if (provideContextName) {
+					if (provideContextName&&!props.contextName) {
 						props.contextName=contextProps&&contextProps.name
 					}
 					return <InnerComponent {...props}/>

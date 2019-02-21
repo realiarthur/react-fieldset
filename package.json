@@ -1,7 +1,7 @@
 {
   "name": "react-fieldset",
-  "version": "3.0.8",
-  "description": "Provide props to components in forms libraries like Formik, Final Form, etc.",
+  "version": "3.0.9",
+  "description": "Provide name and props to components in forms libraries like Formik, Final Form, etc.",
   "main": "index.js",
   "repository": {
     "type": "git",

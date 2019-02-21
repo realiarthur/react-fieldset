@@ -3,8 +3,8 @@ import React, { Component, PureComponent, createContext } from 'react';
 const prefixeName=(contextProps, props)=>(props.name ? (contextProps&&contextProps.name?contextProps.name+'.':'')+props.name : contextProps.name);
 const  { Provider, Consumer } = createContext();
 
-export const withFieldSet = (InnerComponent, provideContextName=false)=>(
-	class WithFieldSet extends PureComponent{
+export const withFieldset = (InnerComponent, provideContextName=false)=>(
+	class WithFieldset extends PureComponent{
 		render() {
 			return <Consumer>
 				{( contextProps )=>{
@@ -33,10 +33,10 @@ export const withFullName = (InnerComponent)=>(
 	}
 )
 
-let FieldSet = (props)=>{
+let Fieldset = (props)=>{
 	let {children, ...otheProps}=props;
 	return <Provider value={ otheProps }>
 		{ children }
 	</Provider>
 }
-export default FieldSet=withFullName(FieldSet);
+export default Fieldset=withFullName(Fieldset);

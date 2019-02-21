@@ -5,11 +5,11 @@ Sometimes, when using forms libraries like [Formik](http://github.com/jaredpalme
 > *For example, you will have to initialize as many variables for array indexes as the nesting levels of arrays. Or the deeper an object is nested, the more unnecessary code is needed to name its fields. Or if you need to provide the same props to several components, you need to put it in each of them.*
 
 Well, it would be great to use a FieldSet component that will: 
-  * **simulate data nesting and deal with field naming**
-  * **provide context to child** components (Field, ErrorMessage, Custom Components, etc.)
-  * **be optimized** and not strongly affect performance (check [performance notes](#performance))
-  * make development of custom presentational components easier (for arrays or fields)
-  * not be attached to specific form library, and can be used with different libraries
+  * **simulate data nesting and deal with field naming;**
+  * **provide context to child** components (Field, ErrorMessage, Custom Components, etc.);
+  * **be optimized** and not strongly affect performance (check [performance notes](#performance));
+  * make development of custom presentational components easier (for arrays or fields);
+  * not be attached to specific form library, and can be used with different libraries.
   
 So, here for you: 
 ```javascript

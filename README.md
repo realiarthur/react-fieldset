@@ -7,11 +7,11 @@ Or the deeper an object is nested, the more unnecessary code is needed to name i
 Or if you need to provide the same props to several components, you need to put it in each of them.*
 
 Well, it would be great to use a FieldSet component that will: 
-  * simulate data nesting and deal with field naming
-  * provide context to child components (Field, ErrorMessage, Custom Components, etc.)
-  * be optimized and not strongly affect performance (check [performance notes](#performance))
-  * make development of custom presentational components (for array or field) easier
-  * not be attached to specific form library, and can be used with different libraries
+  * **simulate data nesting and deal with field naming**
+  * **provide context to child components** (Field, ErrorMessage, Custom Components, etc.)
+  * **be optimized and not strongly affect performance** (check [performance notes](#performance))
+  * **make development of custom presentational components easier** (for arrays or fields)
+  * **not be attached to specific form library,** and can be used with different libraries
   
 So, here for you: 
 ```javascript

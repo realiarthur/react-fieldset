@@ -1,13 +1,23 @@
 # React FieldSet [![](https://img.shields.io/npm/v/react-fieldset.svg?style=flat)](https://www.npmjs.com/package/react-fieldset) ![](https://img.shields.io/bundlephobia/minzip/react-fieldset.svg?style=flat)
 
-Sometimes, when using forms libraries like [Formik](http://github.com/jaredpalmer/formik) or [React Final Form](https://github.com/final-form/react-final-form), it need to **provide same name-prefix and props** to the few form Fields (or ErrorMessage, Custom Component, etc.). So, here for you: 
+Sometimes, when using forms libraries like [Formik](http://github.com/jaredpalmer/formik) or [React Final Form](https://github.com/final-form/react-final-form), **naming and providing props for form components** in large and deeply nested data may be quite tedious. It's boring to write and difficult to maintain.
+
+*For example, you will have to initialize as many variables for array indexes as the nesting levels of arrays. <br/>Or the deeper an object is nested, the more unnecessary code is needed to name its fields. <br/>Or if you need to provide the same props to several components, you need to put it in each of them.*
+
+Well, it would be great to use a Fieldset component that will 
+  * simulate data nesting and deal with field naming
+  * provide context to child components (Field, ErrorMessage, Custom Components, etc.)
+  * be optimized and not strongly affect performance (check [performance notes](#performance))
+  * make development of custom presentational components (for array or field) easier
+  * not be attached to specific form library, and can be used with different libraries
+  
+So, here for you: 
 ```javascript
 import FieldSet, { withFieldSet, withFullName } from 'react-fieldset';
 ```
-<br/>
 
 ### FieldSet
-Container-component, that provide context. Specified props:
+Container-component, that provide context and name-profix. Specified props:
 
 Prop | Type | Description
 -----|------|-----------
@@ -33,7 +43,7 @@ HoC for make inner components connected with FieldSet and only prefixed name pro
 <br/>
   
 # Examples
-All examples written in Formik style, but it not really attached with it and **can use with different libraries**.
+All examples written in Formik style, but it not really attached with it and **can be used with different libraries**.
 
 ### Form data layering 
 It means to accumulate name-prefix for nested fields in a form data. For example: 

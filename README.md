@@ -2,7 +2,7 @@
 
 Sometimes, when using forms libraries like [Formik](http://github.com/jaredpalmer/formik) or [React Final Form](https://github.com/final-form/react-final-form), **naming and providing props for form components in large and deeply nested data may be quite tedious.** It's boring to write and difficult to maintain.
 
-*For example you will have to initialize as many variables for array indexes as the nesting levels of arrays. <br/>
+*For example, you will have to initialize as many variables for array indexes as the nesting levels of arrays. <br/>
 Or the deeper an object is nested, the more unnecessary code is needed to name its fields. <br/>
 Or if you need to provide the same props to several components, you need to put it in each of them.*
 

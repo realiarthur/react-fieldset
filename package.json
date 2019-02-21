@@ -27,7 +27,8 @@
     "forms",
     "fields",
     "fields group",
-    "field set"
+    "field set",
+    "naming"
   ],
   "author": "realiarthur",
   "license": "MIT",

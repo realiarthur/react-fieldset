@@ -6,7 +6,7 @@ Sometimes, when using forms libraries like [Formik](http://github.com/jaredpalme
 Or the deeper an object is nested, the more unnecessary code is needed to name its fields. <br/>
 Or if you need to provide the same props to several components, you need to put it in each of them.*
 
-Well, it would be great to use a Fieldset component that will: 
+Well, it would be great to use a FieldSet component that will: 
   * simulate data nesting and deal with field naming
   * provide context to child components (Field, ErrorMessage, Custom Components, etc.)
   * be optimized and not strongly affect performance (check [performance notes](#performance))

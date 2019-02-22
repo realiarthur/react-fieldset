@@ -3,7 +3,7 @@ import React, { Component, PureComponent, createContext } from 'react';
 const prefixeName=(contextProps, props)=>(props.name ? (contextProps&&contextProps.name?contextProps.name+'.':'')+props.name : contextProps&&contextProps.name||'');
 const  { Provider, Consumer } = createContext();
 
-export function withFieldset (InnerComponent, provideContextName=false) {
+export const withFieldset = (InnerComponent, provideContextName=false)=>{
 	return class WithFieldset extends PureComponent{
 		render() {
 			return <Consumer>
@@ -19,7 +19,7 @@ export function withFieldset (InnerComponent, provideContextName=false) {
 	}
 }
 
-export function withFullName (InnerComponent) { 
+export const withFullName = (InnerComponent)=>{ 
 	return class WithFullName extends PureComponent {
 		render() {
 			return <Consumer>

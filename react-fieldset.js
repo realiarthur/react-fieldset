@@ -1,10 +1,10 @@
 import React, { Component, PureComponent, createContext } from 'react';
 
-const prefixeName=(contextProps, props)=>(props.name ? (contextProps&&contextProps.name?contextProps.name+'.':'')+props.name : contextProps.name);
+const prefixeName=(contextProps, props)=>(props.name ? (contextProps&&contextProps.name?contextProps.name+'.':'')+props.name : contextProps&&contextProps.name||'');
 const  { Provider, Consumer } = createContext();
 
-export const withFieldset = (InnerComponent, provideContextName=false)=>(
-	class WithFieldset extends PureComponent{
+export function withFieldset (InnerComponent, provideContextName=false) {
+	return class WithFieldset extends PureComponent{
 		render() {
 			return <Consumer>
 				{( contextProps )=>{
@@ -17,10 +17,10 @@ export const withFieldset = (InnerComponent, provideContextName=false)=>(
 			</Consumer>
 		}
 	}
-)
+}
 
-export const withFullName = (InnerComponent)=>( 
-	class WithFullName extends PureComponent {
+export function withFullName (InnerComponent) { 
+	return class WithFullName extends PureComponent {
 		render() {
 			return <Consumer>
 				{
@@ -31,7 +31,7 @@ export const withFullName = (InnerComponent)=>(
 			</Consumer>
 		}
 	}
-)
+}
 
 let Fieldset = (props)=>{
 	let {children, ...otheProps}=props;

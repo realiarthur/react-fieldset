@@ -63,7 +63,7 @@ Field = withFieldset(Field);
   <Field name="twitter" />
 </Fieldset>
 ```
-It's also works fine to Arrays and Deep nested fields:
+It's also works fine to **Arrays and Deep nested fields:**
 ```jsx
 import Fieldset, { withFieldset, withFullName } from 'react-fieldset';
 Field = withFieldset(Field);
@@ -83,28 +83,22 @@ friends.map((friend, index) => (
   </Fieldset>
 </Fieldset>
 ```
-It also works fine with ErrorMessage, FastField, or any Custom Components - just connect them **withFieldset() or withFullName()**. You can find more information about this [below](#connection).
+It also works fine with **ErrorMessage, FastField, or any Custom Components** - just connect them **withFieldset() or withFullName()**. You can find more information about this [below](#connection).
 
 <br/>
 
 ### Providing props to the form components
-All props (exept name) will be provided directly to inner component. Also, **feel free to use Fieldset without name-prefix** if needed. So, for example, Fieldset can set "required" for all Fields components in one line:
+All props (exept name) will be provided directly to inner component. Also, **feel free to use Fieldset both with or without name prop**. So, for example, Fieldset can set "required" for all Fields components in one line:
 ```jsx
 import Fieldset, { withFieldset } from 'react-fieldset';
 Field = withFieldset(Field);
 
 //This one
-<Field name="social.facebook" required={true}/>
-<Field name="social.twitter" required={true}/>
+<Field name="facebook" required={true}/>
+<Field name="twitter" required={true}/>
 
 //May looks like this
 <Fieldset required={true}>
-  <Field name="social.facebook"/>
-  <Field name="social.twitter"/>
-</Fieldset>
-
-//Or like this
-<Fieldset name="social" required={true}>
   <Field name="facebook"/>
   <Field name="twitter"/>
 </Fieldset>
@@ -145,8 +139,77 @@ export const ErrorMessage=withFullName(_ErrorMessage);
 <br/>
 
 ### Easy Array
-This is just a small illustration that shows why I needed the power of Fieldset and how you can use it to create Custom Components like EasyArray, which might greatly simplify your code
+This is just a small illustration that shows why I needed the power of Fieldset and how you can use it to create Custom Components like EasyArray, which might greatly simplify your code. Suppose it need to display this data structure  
+```JSX
+initialValues={
+  array: [
+    {nestedArray: [
+      {first: 1, second: 4}, 
+      {first: 2, second: 3} 
+    ]}, 
+    {nestedArray: [ 
+      {first: 3, second: 2}, 
+      {first: 4, second: 1} 
+    ]}
+  ] 
+}
+```
+Commonly this can be done with:
+```JSX
+const UsualForm=({values})=>(
+  <Form>
+    <FieldArray
+      name="array"
+      render={arrayHelpers => (
+        values.array && values.array.length ? (
+          values.array.map((item, index) => (
+              <React.Fragment key={index}>
+                {
+                  item.nestedArray && item.nestedArray.length ? (
+                    item.nestedArray.map((nestedItem, nestedIndex) => (
+                      <React.Fragment key={nestedIndex}>
+                        <Field name={`array[${index}]nestedArray[${nestedIndex}].first`}/>
+                        <Field name={`array[${index}]nestedArray[${nestedIndex}].second`}/>   
+                      </React.Fragment>
+                    ))
+                  ) : null
+                }
+              </React.Fragment>
+            ))
+        ) : null
+      )
+    }/>
+  </Form>
+)
+```
+But with EasyArray it may looks much more simpler:
+```JSX
+const FormWithEasyArray=()=>(
+  <Form>
+    <EasyArray name='array' > 
+      <EasyArray name='nestedArray'> 
+        <Field name='first'/>
+        <Field name='second'/>   
+      </EasyArray>
+    </EasyArray>
+  </Form>
+)
+```
+As the working on EasyArray also quite simple:
+```JSX
+Field=withFieldset(Field);
+FieldArray=withFullName(FieldArray);
 
+const EasyArray = ({name, children, ...props})=>(
+  <FieldArray {...props} name={name} render= { (arrayHelpers)=>(
+    getIn(arrayHelpers.form.values, arrayHelpers.name).map((item,index)=>(
+      <Fieldset key={index} name={`${name||''}[${index}]`}>
+        {children}
+      </Fieldset>
+    ))
+  )}/>
+)
+```
 
 <br/>
 

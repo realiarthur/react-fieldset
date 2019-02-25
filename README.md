@@ -127,7 +127,7 @@ export const ErrorMessage=withFullName(_ErrorMessage);
 <br/>
 
 ### Easy Array
-This is just a small illustration that shows why I needed the power of Fieldset and how you can use it to create Custom Components like EasyArray, which may greatly simplify your code. Suppose it need to display this data structure  
+This is just a **small illustration** that shows why I needed the power of Fieldset and how you can use it to create Custom Components like EasyArray, which may greatly simplify your code. Suppose it need to display this data structure  
 ```javascript
 initialValues={
   array: [

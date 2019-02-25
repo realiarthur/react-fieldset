@@ -16,8 +16,6 @@ So, here for you:
 import Fieldset, { withFieldset, withFullName } from 'react-fieldset';
 ```
 
-<br/>
-
 ### Fieldset
 Container-component, that provide context and name-profix. Specified props:
 

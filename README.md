@@ -59,9 +59,6 @@ Field = withFieldset(Field);
 ```
 It's also works fine to **Arrays and Deep nested fields:**
 ```jsx
-import Fieldset, { withFieldset, withFullName } from 'react-fieldset';
-Field = withFieldset(Field);
-
 //Array
 friends.map((friend, index) => (
 <Fieldset key={index} name={`friends.${index}`}>
@@ -84,9 +81,6 @@ It also works fine with **ErrorMessage, FastField, or any Custom Components** - 
 ### Providing props to the form components
 All props (exept name) will be provided directly to inner component. Also, **feel free to use Fieldset both with or without name prop**. So, for example, Fieldset can set "required" for all Fields components in one line:
 ```jsx
-import Fieldset, { withFieldset } from 'react-fieldset';
-Field = withFieldset(Field);
-
 //This one
 <Field name="facebook" required={true}/>
 <Field name="twitter" required={true}/>

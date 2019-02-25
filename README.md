@@ -128,7 +128,7 @@ export const ErrorMessage=withFullName(_ErrorMessage);
 
 ### Easy Array
 This is just a small illustration that shows why I needed the power of Fieldset and how you can use it to create Custom Components like EasyArray, which may greatly simplify your code. Suppose it need to display this data structure  
-```JSX
+```javascript
 initialValues={
   array: [
     {nestedArray: [
@@ -143,7 +143,7 @@ initialValues={
 }
 ```
 **Commonly** this can be done with:
-```JSX
+```jsx
 const UsualForm=({values})=>(
   <Form>
     <FieldArray
@@ -171,7 +171,7 @@ const UsualForm=({values})=>(
 )
 ```
 But **with EasyArray** its looks much more simpler:
-```JSX
+```jsx
 const FormWithEasyArray=()=>(
   <Form>
     <EasyArray name='array' > 
@@ -184,7 +184,7 @@ const FormWithEasyArray=()=>(
 )
 ```
 As the working on EasyArray also quite simple:
-```JSX
+```jsx
 Field=withFieldset(Field);
 FieldArray=withFullName(FieldArray);
 

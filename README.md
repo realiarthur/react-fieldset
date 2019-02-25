@@ -78,13 +78,12 @@ friends.map((friend, index) => (
 //Deep nested
 <Fieldset name='level1'>
   <Field name='nested-value'/>
-  
   <Fieldset name='level2'>
-    <Field name='deep-nested-value'
+    <Field name='deep-nested-value'/>
   </Fieldset>
 </Fieldset>
 ```
-It also works fine with ErrorMessage, FastField, or your Custom Components, Just connect them **withFieldset()**. You can find more information about this [below](#connection).
+It also works fine with ErrorMessage, FastField, or any Custom Components - just connect them **withFieldset() or withFullName()**. You can find more information about this [below](#connection).
 
 <br/>
 
@@ -142,6 +141,12 @@ export const ErrorMessage=withFullName(_ErrorMessage);
 ```
 </p>
 </details>
+
+<br/>
+
+### Easy Array
+This is just a small illustration that shows why I needed the power of Fieldset and how you can use it to create Custom Components like EasyArray, which might greatly simplify your code
+
 
 <br/>
 

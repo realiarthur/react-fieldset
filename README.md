@@ -28,16 +28,12 @@ name | string | Will be prefixed to inner components props.name. It accumulates 
 
 *Other specified props from version 2.x is deprecated for performance. For get "context", use props.contextName in child components*
 
-<br/>
-
 ### withFieldset (InnerComponent, [ provideContextName=false ]) 
 HoC (higher order component) for make inner components connected with Fieldset and take all props. Allows for connected component to have props:
 
 Prop | Type | Description
 -----|------|-----------
 contextName | string | Provide parent Fieldset full name into component, if it not specified and arg "provideContextName" of withFieldset is true.
-
-<br/>
 
 ### withFullName(InnerComponent)
 HoC for make inner components connected with Fieldset and only prefixed name prop and ignore other context.

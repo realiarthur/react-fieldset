@@ -83,7 +83,7 @@ friends.map((friend, index) => (
   </Fieldset>
 </Fieldset>
 ```
-It also works fine with **ErrorMessage, FastField, or any Custom Components** - just connect them **withFieldset() or withFullName()**. You can find more information about this [below](#connection).
+It also works fine with **ErrorMessage, FastField, or any Custom Components** - just connect them withFieldset() or withFullName(). You can find more information about this [below](#connection).
 
 <br/>
 
@@ -154,7 +154,7 @@ initialValues={
   ] 
 }
 ```
-Commonly this can be done with:
+**Commonly** this can be done with:
 ```JSX
 const UsualForm=({values})=>(
   <Form>
@@ -182,7 +182,7 @@ const UsualForm=({values})=>(
   </Form>
 )
 ```
-But with EasyArray it may looks much more simpler:
+But **with EasyArray** its looks much more simpler:
 ```JSX
 const FormWithEasyArray=()=>(
   <Form>

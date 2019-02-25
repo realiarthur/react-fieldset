@@ -44,8 +44,8 @@ HoC for make inner components connected with Fieldset and only prefixed name pro
 
 <br/>
   
-# Examples
-All examples written in Formik style, but it not really attached with it and **can be used with different libraries**.
+# Usage
+All code sections written in Formik style, but it not really attached with it and **can be used with different libraries**.
 
 ### Form data layering 
 It means to accumulate name-prefix for nested fields in a form data. For example: 
@@ -63,19 +63,16 @@ Field = withFieldset(Field);
   <Field name="twitter" />
 </Fieldset>
 ```
-It's also works fine with Arrays, Deep nested fields, ErrorMessage or your Custom component:
+It's also works fine to Arrays and Deep nested fields:
 ```jsx
 import Fieldset, { withFieldset, withFullName } from 'react-fieldset';
 Field = withFieldset(Field);
-CustomFieldComponent = withFieldset(CustomFieldComponent, true)
-ErrorMessage=withFullName(ErrorMessage)
 
 //Array
 friends.map((friend, index) => (
 <Fieldset key={index} name={`friends.${index}`}>
   <Field name="name"/>
-  <Field name="age" component={CustomInputComponent}/>
-  <CustomFieldComponent name="email"/>
+  <Field name="age"/>
 </Fieldset>
 
 //Deep nested
@@ -83,13 +80,11 @@ friends.map((friend, index) => (
   <Field name='nested-value'/>
   
   <Fieldset name='level2'>
-    <Field name='deep-nested-value' 
-      validate={ (value)=>(value===''?'Required!':false) }/>
-    <ErrorMessage name='deep-nested-value'/>
+    <Field name='deep-nested-value'
   </Fieldset>
 </Fieldset>
 ```
-Of course, you need to connect all Fieldset inner components with **withFieldset()**. You can find more information about this [below](#connection).
+It also works fine with ErrorMessage, FastField, or your Custom Components, Just connect them **withFieldset()**. You can find more information about this [below](#connection).
 
 <br/>
 
@@ -120,14 +115,21 @@ You can provide in props whatever you want, include functions or object, but che
 
 <br/>
 
+# Examples
+
 ### Connection
-If you want use Fieldset you need to connect all of inner components with **withFieldset(Component)**.  
+If you want use Fieldset you need to connect all of inner components with **withFieldset**. If you need to get just a full name, for example in case with ErrorMessage, use **withFullName:**
 ```javascript
-import { withFieldset } from 'react-fieldset';
+import { withFieldset, withFullName } from 'react-fieldset';
+Field=withFieldset(Field)
+ErrorMessage=withFullName(ErrorMessage);
 CustomFieldComponent=withFieldset(CustomFieldComponent, true);
 ```
-##### Formik notes
-If you use Field with component={CustomInputComponent} **you don't need to connect CustomInputComponent**, you need to connect Field. Formik Field, FastField or ErrorMessage is read-only, but I don't want use another name for it. Here, my solution:
+
+<details><summary><b>Formik notes</b></summary>
+<p>
+If you use Field with component={CustomInputComponent} <b>you don't need to connect CustomInputComponent</b>, you need to connect Field. Formik Field, FastField or ErrorMessage is read-only, but I don't want use another name for it. Here, my solution:
+
 ```javascript
 import { withFieldset, withFullName } from 'react-fieldset';
 import { Field as _Field } from 'formik';
@@ -138,6 +140,8 @@ export const Field=withFieldset(_Field);
 export const FastField=withFieldset(_FastField);
 export const ErrorMessage=withFullName(_ErrorMessage);
 ```
+</p>
+</details>
 
 <br/>
 

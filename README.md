@@ -98,33 +98,6 @@ You can provide in props whatever you want, include functions or object, but che
 
 # Examples
 
-### Connection
-If you want use Fieldset you need to connect all of inner components with **withFieldset**. If you need to get just a full name, for example in case with ErrorMessage, use **withFullName:**
-```javascript
-import { withFieldset, withFullName } from 'react-fieldset';
-Field=withFieldset(Field)
-ErrorMessage=withFullName(ErrorMessage);
-CustomFieldComponent=withFieldset(CustomFieldComponent, true);
-```
-
-<details><summary><b>Formik notes</b></summary>
-<p>
-If you use Field with component={CustomInputComponent} <b>you don't need to connect CustomInputComponent</b>, you need to connect Field. Formik Field, FastField or ErrorMessage is read-only, but I don't want use another name for it. Here, my solution:
-
-```javascript
-import { withFieldset, withFullName } from 'react-fieldset';
-import { Field as _Field } from 'formik';
-import { FastField as _FastField } from 'formik';
-import { ErrorMessage as _ErrorMessage } from 'formik';
-
-export const Field=withFieldset(_Field);
-export const FastField=withFieldset(_FastField);
-export const ErrorMessage=withFullName(_ErrorMessage);
-```
-</p>
-</details>
-
-<br/>
 
 ### Easy Array
 This is just a **small illustration** that shows why I needed the power of Fieldset and how you can use it to create Custom Components like EasyArray, which may greatly simplify your code. Suppose it need to display this data structure  
@@ -198,6 +171,35 @@ const EasyArray = ({name, children, ...props})=>(
   )}/>
 )
 ```
+
+<br/>
+
+
+### Connection
+If you want use Fieldset you need to connect all of inner components with **withFieldset**. If you need to get just a full name, for example in case with ErrorMessage, use **withFullName:**
+```javascript
+import { withFieldset, withFullName } from 'react-fieldset';
+Field=withFieldset(Field)
+ErrorMessage=withFullName(ErrorMessage);
+CustomFieldComponent=withFieldset(CustomFieldComponent, true);
+```
+
+<details><summary><b>Formik notes</b></summary>
+<p>
+If you use Field with component={CustomInputComponent} <b>you don't need to connect CustomInputComponent</b>, you need to connect Field. Formik Field, FastField or ErrorMessage is read-only, but I don't want use another name for it. Here, my solution:
+
+```javascript
+import { withFieldset, withFullName } from 'react-fieldset';
+import { Field as _Field } from 'formik';
+import { FastField as _FastField } from 'formik';
+import { ErrorMessage as _ErrorMessage } from 'formik';
+
+export const Field=withFieldset(_Field);
+export const FastField=withFieldset(_FastField);
+export const ErrorMessage=withFullName(_ErrorMessage);
+```
+</p>
+</details>
 
 <br/>
 

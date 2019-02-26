@@ -17,7 +17,7 @@ import Fieldset, { withFieldset, withFullName } from 'react-fieldset';
 ```
 
 ### Fieldset
-Container-component, that provide context and name-profix. Specified props:
+Container-component, that provide context and name-prefix. Specified props:
 
 Prop | Type | Description
 -----|------|-----------

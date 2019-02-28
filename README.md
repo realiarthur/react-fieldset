@@ -100,7 +100,7 @@ You can provide in props whatever you want, include functions or object, but che
 
 
 ### Easy Array
-This is just a **small illustration** that shows why I needed the power of Fieldset and how you can use it to create Custom Components like EasyArray, which may greatly simplify your code. So, let's imagine that it needs to display this data structure  
+This is just a **small illustration** that shows why I needed the power of Fieldset and how you can use it to create Custom Components like EasyArray, which may greatly simplify your code. So, let's imagine that it needs to display this data structure:
 ```javascript
 initialValues={
   array: [

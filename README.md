@@ -11,35 +11,35 @@ Well, it would be great to use a Fieldset component that will:
   * make development of custom presentational components easier (for arrays or fields);
   * not be attached to specific form library, and can be used with different libraries.
   
-So, here for you: 
+So, here is: 
 ```javascript
 import Fieldset, { withFieldset, withFullName } from 'react-fieldset';
 ```
 
 ### Fieldset
-Container-component, that provide context and name-prefix. Specified props:
+Container-component, that provides context and name-prefix. Specified props:
 
 Prop | Type | Description
 -----|------|-----------
 name | string | Will be prefixed to inner components props.name. It accumulates from whole context tree, so it also works fine for **deep nested objects or arrays.**
 ...props | any | All other props will be provided to inner component as they are, from parent Fieldset.
 
-*Other specified props from version 2.x is deprecated for performance. For get "context", use props.contextName in child components*
+*Other specified props from version 2.x are deprecated for performance. To get "context", use props.contextName in child components*
 
 ### withFieldset (InnerComponent, [ provideContextName=false ]) 
-HoC (higher order component) for make inner components connected with Fieldset and take all props. Allows for connected component to have props:
+HoC (higher order component) to make inner components connected with Fieldset and take all props. Allows for connected component to have props:
 
 Prop | Type | Description
 -----|------|-----------
 contextName | string | Provide parent Fieldset full name into component, if it not specified and arg "provideContextName" of withFieldset is true.
 
 ### withFullName(InnerComponent)
-HoC for make inner components connected with Fieldset and only prefixed name prop and ignore other context.
+HoC to make inner components connected with Fieldset and only prefixed name prop and ignore other context.
 
 <br/>
   
 # Usage
-All code sections written in Formik style, but it not really attached with it and **can be used with different libraries**.
+All code sections are written in Formik style, but Fieldset isn't really attached with it and **can be used with different libraries**.
 
 ### Form data layering 
 It means to accumulate name-prefix for nested fields in a form data. For example: 
@@ -51,13 +51,13 @@ Field = withFieldset(Field);
 <Field name="social.facebook" />
 <Field name="social.twitter" />
 
-//May looks like this
+//May look like this
 <Fieldset name="social">
   <Field name="facebook" />
   <Field name="twitter" />
 </Fieldset>
 ```
-It's also works fine to **Arrays and Deep nested fields:**
+It also works fine to **Arrays and Deep nested fields:**
 ```jsx
 //Array
 friends.map((friend, index) => (
@@ -79,13 +79,13 @@ It also works fine with **ErrorMessage, FastField, or any Custom Components** - 
 <br/>
 
 ### Providing props to the form components
-All props (exept name) will be provided directly to inner component. Also, **feel free to use Fieldset both with or without name prop**. So, for example, Fieldset can set "required" for all Fields components in one line:
+All props (except name) will be provided directly to inner component. Also, **feel free to use Fieldset both with or without name prop**. So, for example, Fieldset can set "required" for all Fields components in one line:
 ```jsx
 //This one
 <Field name="facebook" required={true}/>
 <Field name="twitter" required={true}/>
 
-//May looks like this
+//May look like this
 <Fieldset required={true}>
   <Field name="facebook"/>
   <Field name="twitter"/>
@@ -100,7 +100,7 @@ You can provide in props whatever you want, include functions or object, but che
 
 
 ### Easy Array
-This is just a **small illustration** that shows why I needed the power of Fieldset and how you can use it to create Custom Components like EasyArray, which may greatly simplify your code. Suppose it need to display this data structure  
+This is just a **small illustration** that shows why I needed the power of Fieldset and how you can use it to create Custom Components like EasyArray, which may greatly simplify your code. So, let's imagine that it needs to display this data structure  
 ```javascript
 initialValues={
   array: [
@@ -143,7 +143,7 @@ const UsualForm=({values})=>(
   </Form>
 )
 ```
-But **with EasyArray** its looks much more simpler:
+But **with EasyArray** its looks more simpler:
 ```jsx
 const FormWithEasyArray=()=>(
   <Form>
@@ -156,7 +156,7 @@ const FormWithEasyArray=()=>(
   </Form>
 )
 ```
-As the working on EasyArray also quite simple:
+As working on EasyArray is also quite simple:
 ```jsx
 Field=withFieldset(Field);
 FieldArray=withFullName(FieldArray);
@@ -176,7 +176,7 @@ const EasyArray = ({name, children, ...props})=>(
 
 
 ### Connection
-If you want use Fieldset you need to connect all of inner components with **withFieldset**. If you need to get just a full name, for example in case with ErrorMessage, use **withFullName:**
+If you want to use Fieldset, you need to connect all components, witch need to get context, with **withFieldset**. If you need to get just a full name, for example in case with ErrorMessage, use **withFullName:**
 ```javascript
 import { withFieldset, withFullName } from 'react-fieldset';
 Field=withFieldset(Field)
@@ -186,7 +186,7 @@ CustomFieldComponent=withFieldset(CustomFieldComponent, true);
 
 <details><summary><b>Formik notes</b></summary>
 <p>
-If you use Field with component={CustomInputComponent} <b>you don't need to connect CustomInputComponent</b>, you need to connect Field. Formik Field, FastField or ErrorMessage is read-only, but I don't want use another name for it. Here, my solution:
+If you use Field with component={CustomInputComponent} <b>you don't need to connect CustomInputComponent</b>, you need to connect Field. Formik Field, FastField or ErrorMessage is read-only, but I don't want to use another name for it. Here is my solution:
 
 ```javascript
 import { withFieldset, withFullName } from 'react-fieldset';
@@ -206,5 +206,5 @@ export const ErrorMessage=withFullName(_ErrorMessage);
 # Performance
 * Fieldset provides its context for all child components wrapped with withFieldset, so **avoid passing inline-functions and objects to Fieldset props** if possible - this will cause each of connected child components to be re-rendered each time with Formik, which can affect performance. 
 * **withFieldset returns PureComponents,** so similarly avoid passing inline-functions and objects to props of wrapped components, if possible
-* For components in which you don't need props from context and **only need to name prefixed use withFullName.** Its ignores context of the Fieldset, and only adds the name of the component, so this component will not be rerenders when you change the context.
+* For components in which you don't need props from context and **only need to get full name - use withFullName.** It ignores context of the Fieldset, and only adds the name of the component, so this component will not be re-renders when you change the context.
 * You can also **combine both of these HoCs** (withFieldset, withFullName) to isolate one component from the context, and provide it to others within the same Fieldset

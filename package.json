@@ -1,6 +1,6 @@
 {
   "name": "react-fieldset",
-  "version": "3.1.5",
+  "version": "3.1.6",
   "description": "Provide name and props to components in forms libraries like Formik, Final Form, etc.",
   "main": "index.js",
   "repository": {
@@ -44,6 +44,7 @@
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
-    "react": "^16.0.0"
+    "react": "^16.0.0",
+    "webpack-node-externals": "^1.7.2"
   }
 }

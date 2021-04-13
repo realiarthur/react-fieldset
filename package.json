@@ -1,34 +1,31 @@
 {
   "name": "react-fieldset",
-  "version": "3.1.6",
-  "description": "Provide name and props to components in forms libraries like Formik, Final Form, etc.",
-  "main": "index.js",
+  "version": "4.0.0",
+  "description": "Declarative field naming and props providing in complex tree-data forms",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/realiarthur/react-fieldset.git"
   },
   "scripts": {
-    "build": "webpack"
+    "start": "webpack serve -c ./examples/webpack.config.js",
+    "build": "NODE_ENV=development rollup -c"
   },
   "keywords": [
     "react",
-    "formik",
-    "final form",
-    "hoc",
     "form",
     "field",
+    "naming",
     "field group",
     "fieldset",
     "name",
-    "data layer",
-    "data slice",
-    "higher order component",
     "context",
     "forms",
     "fields",
     "fields group",
     "field set",
-    "naming"
+    "formik",
+    "final form"
   ],
   "author": "realiarthur",
   "license": "MIT",
@@ -37,14 +34,20 @@
   },
   "homepage": "https://github.com/realiarthur/react-fieldset#readme",
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.14.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
-    "react": "^16.0.0",
-    "webpack-node-externals": "^1.7.2"
+    "formik": "^2.2.6",
+    "react-dom": "^16.14.0",
+    "rollup": "^2.45.2",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-terser": "^7.0.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }
